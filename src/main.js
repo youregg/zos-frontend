@@ -4,8 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
+import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
+Vue.prototype.$http=axios
+//axios.defaults.baseURL = 'https://10.60.45.8:8800'
+//axios.defaults.headers.common['Authorization'] = 'Basic aWJtdXNlcjoyMDE4MDY='
 
 Vue.config.productionTip = false
 

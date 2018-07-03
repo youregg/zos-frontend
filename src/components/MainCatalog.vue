@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" @click="showCatalog">
         MainCatalog
     </div>
 </template>
@@ -10,6 +10,20 @@
         data(){
     		return{
 
+            }
+        },
+        methods:{
+            showCatalog(){
+            	this.$http({
+            		url:'api/zosmf/',
+                    method:'get',
+                    auth: {
+                        username:"ST028",
+                        password: "111111"
+                    },
+                }).then(function (res) {
+                	console.log(res)
+		            })
             }
         }
     }
