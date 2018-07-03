@@ -1,12 +1,12 @@
 <template>
     <div class="container">
-        Alias
+        Search
     </div>
 </template>
 
 <script>
 	export default{
-		name:"Alias",
+		name:"Search",
 		data(){
 			return{
 

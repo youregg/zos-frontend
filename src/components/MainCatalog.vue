@@ -1,5 +1,7 @@
 <template>
-
+    <div class="container">
+        MainCatalog
+    </div>
 </template>
 
 <script>
@@ -15,5 +17,8 @@
 </script>
 
 <style scoped>
-
+    .container{
+        display: flex;
+        flex-direction: row;
+    }
 </style>

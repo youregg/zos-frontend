@@ -8,9 +8,10 @@
         </div>
         <div class="nav-container">
             <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect" background-color="#D2E0E9">
-                <el-menu-item index="1">Main catalog</el-menu-item>
-                <el-menu-item index="2">User catalog</el-menu-item>
-                <el-menu-item index="3">Alias</el-menu-item>
+                <el-menu-item index="0">Main catalog</el-menu-item>
+                <el-menu-item index="1">User catalog</el-menu-item>
+                <el-menu-item index="2">Alias</el-menu-item>
+                <el-menu-item index="3">Search</el-menu-item>
                 <el-menu-item index="4">Chart</el-menu-item>
             </el-menu>
         </div>
@@ -27,12 +28,13 @@
             return {
                 msg: 'Welcome to Your Vue.js App',
                 input:'',
-                activeIndex: '1'
+                activeIndex: '0'
             }
         },
 	    methods: {
 		    handleSelect(key, keyPath) {
-			    console.log(key, keyPath)
+                this.$emit("getIndex",key)
+
 		    }
 	    }
     }
@@ -42,7 +44,6 @@
     .header{
         width: 100%;
         height: 13rem;
-        position: fixed;
         left: 0;
         top:0;
         background-color: rgb(210,224,233);
