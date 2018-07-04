@@ -58,6 +58,7 @@
         height: 13rem;
         left: 0;
         top:0;
+        position: fixed;
         background-color: rgb(210,224,233);
         display: flex;
         flex-direction: column;
