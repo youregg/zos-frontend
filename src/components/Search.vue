@@ -1,34 +1,30 @@
 <template>
     <div class="container">
-
+        {{input}}
     </div>
 </template>
 
 <script>
 	export default {
+        name:"Search",
+        methods: {},
+        data() {
+    	    return {}
+        },
+        props:["input"]
 
-    methods: {
-      indexMethod(index) {
-        return index + 1;
-      }
-    },
-    data() {
-      return {}
-    }
   }
 
 </script>
 
 <style scoped>
   .container{
-    flex-direction: row;
-    font-size: 13px;
-    width: 80%;
-    height: auto;
-    margin-top: 50px;
-    left: 10%;
-    display: flex;
-    position: relative;
-    margin-bottom: 50px;
+      display: flex;
+      flex-direction: column;
+      font-size: 13px;
+      width: 90%;
+      margin-top: 100px;
+      align-items: center;
+      justify-content: center;
   }
 </style>

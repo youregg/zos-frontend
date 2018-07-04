@@ -1,9 +1,9 @@
 <template>
     <div class = "home-container">
         <router-view/>
-        <Header @getIndex="showIndex"></Header>
+        <Header @getIndex="showIndex" @getInput="showInput"></Header>
         <div class="content-container">
-            <MainCatalog :is="currentComponent"></MainCatalog>
+            <MainCatalog :is="currentComponent" v-bind:input="inputString"></MainCatalog>
         </div>
     </div>
 </template>
@@ -22,7 +22,8 @@
 			return {
 				index:0,
                 arr:['MainCatalog','UserCatalog','Alias','Search','Chart'],
-                currentTab:"MainCatalog"
+                currentTab:"MainCatalog",
+                inputString:""
 
 			}
 		},
@@ -38,7 +39,9 @@
 			showIndex:function(data){
                 this.index = data
                 this.currentTab = this.arr[data]
-                //console.log(this.currentTab)
+            },
+            showInput:function(data){
+				this.inputString = data
             }
         },
         computed:{
