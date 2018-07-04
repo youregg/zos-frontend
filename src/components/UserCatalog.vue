@@ -32,10 +32,40 @@
 <script>
 	export default{
 		name:"UserCatalog",
-    methods:{
-      indexMethod(index) {
-        return index +1;
-      }
+
+        methods:{
+          indexMethod(index) {
+            return index +1;
+          },
+          init(){
+              let _this = this
+              _this.$http({
+                  url:'http://127.0.0.1:3000/getUserCatalog',
+                  method:'get'
+              }).then(function (res) {
+                  let jobId = res.data.jobid
+                  let jobName = res.data.jobname
+                  console.log(jobName)
+                  _this.$http({
+                      url:'http://127.0.0.1:3000/getJobById/'+jobName+"/"+jobId,
+                      method:'get'
+                  }).then(function(res){
+                    //console.log(res.data)
+                    var array = new Array();
+                      array = res.data.split("\n")
+                    for(let i=0;i<array.length;i++){
+                      array[i] = array[i].replace(/\s+$|^\s+/g,"");
+                        console.log(array[i])
+                    }
+                    //console.log(array)
+                  })
+              }).catch(function(error){
+                  console.log(error)
+              })
+          }
+        },
+    mounted(){
+		  this.init()
     },
 		data(){
 			return{

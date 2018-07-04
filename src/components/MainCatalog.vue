@@ -30,11 +30,10 @@
               <div class="grid-content bg-white" >
                 <el-card class="box-card" style="width: 100%">
                   <!--MASTER CATALOG表格-->
-                  <el-table id="table1" :data="tableData1" border stripe style="width: 100%">
+                  <el-table :data="tableData1"  border stripe style="width: 100%">
                     <el-table-column align="center"  width="80" type="index" :index="indexMethod"></el-table-column>
                     <el-table-column align="center" prop="Mtype" label="TYPE"  width="180"></el-table-column>
                     <el-table-column align="center"  prop="Mname" label="Name"></el-table-column>
-
                   </el-table>
                 </el-card>
               </div>
@@ -53,57 +52,64 @@
 <script>
   import roseType from '../components/roseType'
     export default{
-    	name:"MainCatalog",
-      components:{
-    	  roseType
-      },
+
+  	    name:"MainCatalog",
+        components:{
+  	    	roseType
+        },
         data(){
     		return{
-    		  cChart:'1',
-            MasterMenu:'1',
-            tableData1:[]
-
-         }
+    			cChart:'1',
+                MasterMenu:'1',
+                tableData1: []
+            }
         },
         methods:{
           indexMethod(index) {
             return index +1;
           },
-            loginZos(){
-            	this.$http({
-            		url:'api/zosmf/',
-                    method:'get',
-                    auth: {
-                        username:"ST028",
-                        password: "111111"
-                    },
-                }).then(function (res) {
-                	console.log(res)
-		            })
-            },
-          showMastercatlog(){
-
-            this.$http({
-              url:'api/zosmf/restjobs/jobs',
-              method:'put',
-              auth: {
-                username:"ST014",
-                password: "2768"
-              },
-              headers: {
-                         'Authorization':'Basic U1QwMTQ6Mjc2OA==',
-                         'Content-Type':'application/json'
-              },
-              data:{
-                "file":"//'ST028.CATALOG(LSTMASTR)'"
-              }
+          initMainCatalog(){
+            let _this = this
+            _this.$http({
+              url: 'http://127.0.0.1:3000/getMainCatalog',
+              method: 'get'
             }).then(function (res) {
-              console.log(res)
+              let jobId = res.data.jobid
+              let jobName = res.data.jobname
+              _this.$http({
+                url: 'http://127.0.0.1:3000/getJobById/' + jobName + "/" + jobId,
+                method: 'get'
+              }).then(function (res) {
+                _this.data = res.data
+                console.log( res.data)
+                var MasterArray = new Array();
+                MasterArray = res.data.split("\n")
+                for(let i=0;i<MasterArray.length;i++){
+                  var arr = new Array()
+                  arr=MasterArray[i].toString().substring(1).split(" ")
+                  if(arr.length ==3){
+                    var temp ={
+                      "Mname":'',
+                      "Mtype":''
+                    }
+                    temp.Mname = arr[2];
+                    temp.Mtype = arr[0];
+                    _this.tableData1.push(temp)
+
+                  }
+                  if(arr.length ==2){
+                    console.log(arr)
+                  }
+                }
+              })
+            }).catch(function (error) {
+              console.log(error)
             })
-          }
+          },
+
         },
       mounted(){
-    	  this.loginZos();
+    	  this.initMainCatalog();
       }
     }
 
@@ -111,36 +117,28 @@
 
 <style scoped>
     .container{
-      flex-direction: column;
-      font-size: 13px;
-      width: 100%;
-      height: auto;
-      margin-top: 50px;
-      left: 10%;
-      display: flex;
-      position: relative;
-      margin-bottom: 50px;
+        flex-direction: column;
+        font-size: 13px;
+        margin-top: 50px;
+        display: flex;
+        align-items: center;
     }
-  .table{
-    flex-direction: column;
-    font-size: 13px;
-    width:80%;
-    height: auto;
-    margin-top: 0px;
-    display: flex;
-    position:relative;
-    margin-bottom: 50px;
-  }
 
-  .cycleChart{
-    flex-direction: column;
-    font-size: 13px;
-    width:80%;
-    height: auto;
-    margin-top: 0px;
-    display: flex;
-    position:center;
-    margin-bottom: 50px;
-  }
+    .cycleChart{
+        display: flex;
+        width: 90%;
+        flex-direction: column;
+        font-size: 13px;
+        align-items: center;
+    }
+
+    .table{
+        display: flex;
+        flex-direction: column;
+        font-size: 13px;
+        width:90%;
+        margin-top: 50px;
+    }
+
 
 </style>

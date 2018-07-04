@@ -10,8 +10,6 @@ import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
 Vue.use(VCharts)
 Vue.prototype.$http=axios
-//axios.defaults.baseURL = 'https://10.60.45.8:8800'
-//axios.defaults.headers.common['Authorization'] = 'Basic aWJtdXNlcjoyMDE4MDY='
 
 Vue.config.productionTip = false
 
