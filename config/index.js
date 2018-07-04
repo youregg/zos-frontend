@@ -14,8 +14,7 @@ module.exports = {
     assetsPublicPath: '/',
 	  proxyTable: {
 		  '/api': {
-			  target: 'https://10.60.45.8:8800/',
-			  secure: false,
+			  target: 'http://127.0.0.1:3000/',
 			  changeOrigin: true,
 			  pathRewrite: {
 				  '^/api': '/'
@@ -24,8 +23,8 @@ module.exports = {
 	  },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
-    autoOpenBrowser: false,
+    host: '127.0.0.1', // can be overwritten by process.env.HOST
+    autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-

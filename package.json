@@ -5,7 +5,7 @@
   "author": "陈淇格 <cqg186495@outlook.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --open --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
@@ -15,8 +15,16 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "element-ui": "^2.4.2",
+    "express": "^4.16.3",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "morgan": "^1.9.0",
+    "path": "^0.12.7",
     "qs": "^6.5.2",
+    "request": "^2.87.0",
+    "serve-favicon": "^2.5.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

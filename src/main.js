@@ -8,9 +8,9 @@ import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
 Vue.prototype.$http=axios
-//axios.defaults.baseURL = 'https://10.60.45.8:8800'
+//axios.defaults.baseURL = 'http://127.0.0.1:3000/'
 //axios.defaults.headers.common['Authorization'] = 'Basic aWJtdXNlcjoyMDE4MDY='
-
+//axios.defaults.withCredentials = true
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
