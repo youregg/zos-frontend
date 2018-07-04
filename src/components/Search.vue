@@ -1,24 +1,34 @@
 <template>
     <div class="container">
-        Search
+
     </div>
 </template>
 
 <script>
-	export default{
-		name:"Search",
-		data(){
-			return{
+	export default {
 
-			}
-		}
-	}
+    methods: {
+      indexMethod(index) {
+        return index + 1;
+      }
+    },
+    data() {
+      return {}
+    }
+  }
 
 </script>
 
 <style scoped>
-    .container{
-        display: flex;
-        flex-direction: row;
-    }
+  .container{
+    flex-direction: row;
+    font-size: 13px;
+    width: 80%;
+    height: auto;
+    margin-top: 50px;
+    left: 10%;
+    display: flex;
+    position: relative;
+    margin-bottom: 50px;
+  }
 </style>

@@ -1,13 +1,17 @@
 <template>
     <div class="container">
-        Chart
+      <roseType></roseType>
     </div>
 
 </template>
 
 <script>
+  import roseType from '../components/roseType'
 	export default{
 		name:"Chart",
+    components:{
+      roseType
+    },
 		data(){
 			return{
 
@@ -19,8 +23,15 @@
 
 <style scoped>
     .container{
-        display: flex;
-        flex-direction: row;
+      flex-direction: column;
+      font-size: 13px;
+      width:80%;
+      height: auto;
+      margin-top: 50px;
+      margin-left: 10%;
+      display: flex;
+      position:center;
+      margin-bottom: 50px;
     }
 
 

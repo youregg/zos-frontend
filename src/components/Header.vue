@@ -4,7 +4,7 @@
             zOS frontend
         </div>
         <div class="input-container">
-            <el-input v-model="input" placeholder="Please enter catalog" prefix-icon="el-icon-search" clearable></el-input>
+            <el-input v-model="input" placeholder="Please enter catalog" prefix-icon="el-icon-search" clearable @change="showTable"></el-input>
         </div>
         <div class="nav-container">
             <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect" background-color="#D2E0E9">
@@ -15,29 +15,41 @@
                 <el-menu-item index="4">Chart</el-menu-item>
             </el-menu>
         </div>
+      <Search :msg1="HaliasVisible"></Search>
     </div>
 </template>
 
 <script>
 	import Vue from 'vue'
 	import ElementUI from 'element-ui'
-
+  import Search from '../components/Search'
     export default {
         name: 'Header',
+      components:{
+        Search
+      },
         data () {
             return {
                 msg: 'Welcome to Your Vue.js App',
                 input:'',
-                activeIndex: '0'
+                activeIndex: '0',
+                HaliasVisible: false
             }
         },
 	    methods: {
 		    handleSelect(key, keyPath) {
                 this.$emit("getIndex",key)
 
-		    }
+		    },
+        showTable(e){
+		      console.log(e)
+          if(e == "ALIAS"){
+		        this.HaliasVisible = !this.HaliasVisible;
+		        Search.aliasVisible = this.HaliasVisible;
+          }
 	    }
     }
+	}
 </script>
 
 <style scoped>
@@ -68,4 +80,5 @@
         margin-top:20px;
 
     }
+
 </style>
