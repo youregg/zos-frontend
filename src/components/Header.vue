@@ -65,10 +65,12 @@
         align-items: center;
         justify-content: center;
         font-family: "Century Gothic";
+        z-index: 100;
     }
     .header-title{
         font-size: 2em;
         font-family: "Century Gothic";
+        margin-top: 90px;
     }
     .input-container{
         margin-top:20px;

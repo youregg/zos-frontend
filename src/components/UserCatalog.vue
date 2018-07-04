@@ -59,8 +59,7 @@
         },
 		data(){
 			return{
-
-           tableData8:[]
+				tableData8:[]
 			}
 		}
 	}
@@ -69,14 +68,9 @@
 
 <style scoped>
   .container{
-    flex-direction: row;
-    font-size: 13px;
-    width: 80%;
-    height: auto;
-    margin-top: 50px;
-    left: 10%;
-    display: flex;
-    position: relative;
-    margin-bottom: 50px;
+      display: flex;
+      flex-direction: row;
+      font-size: 13px;
+      margin-top: 120px;
   }
 </style>

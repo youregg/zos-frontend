@@ -95,7 +95,6 @@ app.get('/getUserCatalog', (req, res) => {
 	request(options, function (error, response, body) {
 		if (error) throw new Error(error);
 		//var a = processCatalogBody(body, "MasterCatalog");
-		console.log(body)
 		res.send(body)
 	})
 })
@@ -115,7 +114,7 @@ app.get('/getMainCatalog', (req, res) => {
 	request(options, function (error, response, body) {
 		if (error) throw new Error(error);
 		//var a = processCatalogBody(body, "MasterCatalog");
-		console.log(body)
+		console.log(res)
 		res.send(body)
 	})
 })
@@ -135,7 +134,6 @@ app.get('/getAlias', (req, res) => {
 	request(options, function (error, response, body) {
 		if (error) throw new Error(error);
 		//var a = processCatalogBody(body, "MasterCatalog");
-		console.log(body)
 		res.send(body)
 	})
 })
@@ -152,7 +150,6 @@ app.get('/getJobById/:jobname/:jobid', (req, res) => {
 	request(options, function (error, response, body) {
 		if (error) throw new Error(error)
 		else{
-			console.log(body)
 			res.send(body)
 		}
 		//var a = processCatalogBody(body, "MasterCatalog");

@@ -4,7 +4,6 @@
         <Header @getIndex="showIndex"></Header>
         <div class="content-container">
             <MainCatalog :is="currentComponent"></MainCatalog>
-
         </div>
     </div>
 </template>
@@ -55,10 +54,17 @@
     .home-container{
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
+
     .content-container{
         display: flex;
         flex-direction: column;
+        margin-top: 120px;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
     }
 
 

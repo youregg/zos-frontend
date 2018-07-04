@@ -16,7 +16,6 @@
             columns: ['type', '数量'],
             rows: [
               { 'type': 'ALIAS', '数量': 118 },
-
               { 'type': 'PAGESPACE', '数量': 7 },
               { 'type': 'CLUSTER', '数量': 39 },
               { 'type': 'DATA', '数量': 46 },

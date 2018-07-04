@@ -19,6 +19,7 @@
           </el-collapse-item>
         </el-collapse>
       </div>
+
       <div class="table">
         <el-collapse v-model="MasterMenu" style="width: 100%">
         <el-collapse-item title="MASTER CATALOG" name="1">
@@ -46,12 +47,10 @@
       </div>
 
     </div>
-
-
 </template>
 
 <script>
-  import roseType from '../components/roseType'
+    import roseType from '../components/roseType'
     export default{
   	    name:"MainCatalog",
         components:{
@@ -61,60 +60,59 @@
     		return{
     			cChart:'1',
                 MasterMenu:'1',
-                tableData1:[]
+                tableData1:[],
+                entryList:{
+    				alias:0,
+                    pagespace:0,
+                    data:0,
+                    index:0,
+                    nonvsam:0,
+                    usercatalog:0
+                }
             }
         },
-        methods:{
-          indexMethod(index) {
-            return index +1;
-          },
-            loginZos(){
-            	this.$http({
-            		url:'api/zosmf/',
-                    method:'get',
-                    auth: {
-                        username:"ST028",
-                        password: "111111"
-                    },
-                }).then(function (res) {
-                	console.log(res)
-		            })
-            },
-          showMastercatlog(){
+        methods: {
+	        indexMethod(index) {
+		        return index + 1
+	        },
 
-            this.$http({
-              url:'api/zosmf/restjobs/jobs',
-              method:'put',
-              auth: {
-                username:"ST014",
-                password: "2768"
-              },
-              headers: {
-                         'Authorization':'Basic U1QwMTQ6Mjc2OA==',
-                         'Content-Type':'application/json'
-              },
-              data:{
-                "file":"//'ST028.CATALOG(LSTMASTR)'"
-              }
-            }).then(function (res) {
-              console.log(res)
-            })
-          }
+	        initMainCatalog(){
+		        let _this = this
+		        _this.$http({
+			        url: 'http://127.0.0.1:3000/getMainCatalog',
+			        method: 'get'
+		        }).then(function (res) {
+			        let jobId = res.data.jobid
+			        let jobName = res.data.jobname
+			        _this.$http({
+				        url: 'http://127.0.0.1:3000/getJobById/' + jobName + "/" + jobId,
+				        method: 'get'
+			        }).then(function (res) {
+				        //_this.data = res.data
+                        //_this.initChart(_this.data)
+                        console.log(res.data)
+			        })
+		        }).catch(function (error) {
+			        console.log(error)
+		        })
+            }
         },
-      mounted(){
-    	  this.loginZos();
-      }
+        mounted(){
+        	//this.initMainCatalog()
+        }
     }
 
 </script>
 
 <style scoped>
     .container{
+        display: flex;
         flex-direction: column;
         font-size: 13px;
         margin-top: 50px;
-        display: flex;
         align-items: center;
+        justify-content: center;
+        width: 100%;
     }
 
     .cycleChart{
@@ -123,6 +121,7 @@
         flex-direction: column;
         font-size: 13px;
         align-items: center;
+        margin-top:50px;
     }
 
     .table{
