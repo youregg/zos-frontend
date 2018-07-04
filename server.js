@@ -68,15 +68,12 @@ app.get('/', (req, res) => {
 					'Cache-Control': 'no-cache',
 					Authorization: 'Basic aWJtdXNlcjoyMDE4MDY='
 				}
-	};
+	}
 
 	request(options, function (error, response, body) {
-		if (error) throw new Error(error);
-
-		//var a = processCatalogBody(body, "MasterCatalog");
-		console.log(body)
+		if (error) throw new Error(error)
 		res.send(body)
-	});
+	})
 })
 
 app.get('/getUserCatalog', (req, res) => {
@@ -87,14 +84,12 @@ app.get('/getUserCatalog', (req, res) => {
 		headers: {
 			'Cache-Control': 'no-cache',
 			Authorization: 'Basic aWJtdXNlcjoyMDE4MDY=',
-			//'Content-type':'text/plain',
 			'Content-type':'application/json'
 		},
 		body:JSON.stringify({"file":"//'ST028.CATALOG(LSTUSER)'"})
 	}
 	request(options, function (error, response, body) {
 		if (error) throw new Error(error);
-		//var a = processCatalogBody(body, "MasterCatalog");
 		res.send(body)
 	})
 })
@@ -113,7 +108,6 @@ app.get('/getMainCatalog', (req, res) => {
 	}
 	request(options, function (error, response, body) {
 		if (error) throw new Error(error);
-		//var a = processCatalogBody(body, "MasterCatalog");
 		console.log(res)
 		res.send(body)
 	})
@@ -133,7 +127,6 @@ app.get('/getAlias', (req, res) => {
 	}
 	request(options, function (error, response, body) {
 		if (error) throw new Error(error);
-		//var a = processCatalogBody(body, "MasterCatalog");
 		res.send(body)
 	})
 })
@@ -152,8 +145,51 @@ app.get('/getJobById/:jobname/:jobid', (req, res) => {
 		else{
 			res.send(body)
 		}
-		//var a = processCatalogBody(body, "MasterCatalog");
-	});
+	})
+})
+
+app.get('/catalog/:catalogName',(req,res) => {
+	var options = {
+		method: 'PUT',
+		url:"https://10.60.45.8:8800/zosmf/restjobs/jobs",
+		rejectUnauthorized:false,
+		headers:{
+			Authorization: 'Basic aWJtdXNlcjoyMDE4MDY=',
+			'Content-type':'text/plain'
+		},
+		body:"//LSTCATA JOB ,'USER',NOTIFY=&SYSUID " +'\n'
+		+"//STEP1 EXEC PGM=IDCAMS"+'\n'
+		+ "//SYSPRINT DD SYSOUT=*"+'\n'
+		+"//SYSIN DD *"+'\n'
+		+"   LISTCAT USERCATALOG ENTRIES("+req.params.catalogName+") ALL" +'\n'
+		+"/*"
+	}
+	request(options, function (error, response, body) {
+		if (error) throw new Error(error)
+		res.send(body)
+	})
+})
+
+app.get('/alias/:aliasName',(req,res) => {
+	var options = {
+		method: 'PUT',
+		url:"https://10.60.45.8:8800/zosmf/restjobs/jobs",
+		rejectUnauthorized:false,
+		headers:{
+			Authorization: 'Basic aWJtdXNlcjoyMDE4MDY=',
+			'Content-type':'text/plain'
+		},
+		body:"//LSTALIAS JOB ,'USER',NOTIFY=&SYSUID " +'\n'
+		+"//STEP1 EXEC PGM=IDCAMS"+'\n'
+		+ "//SYSPRINT DD SYSOUT=*"+'\n'
+		+"//SYSIN DD *"+'\n'
+		+"   LISTCAT ALIAS ENTRIES("+req.params.aliasName+") ALL" +'\n'
+		+"/*"
+	}
+	request(options, function (error, response, body) {
+		if (error) throw new Error(error)
+		res.send(body)
+	})
 })
 
 

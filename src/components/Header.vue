@@ -3,9 +3,6 @@
         <div class="header-title">
             zOS frontend
         </div>
-        <div id="input-container">
-            <el-input v-model="input" placeholder="Please enter catalog" prefix-icon="el-icon-search" clearable @change="getInput"></el-input>
-        </div>
         <div class="nav-container">
             <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect" background-color="#D2E0E9">
                 <el-menu-item index="0">Main catalog</el-menu-item>
@@ -38,11 +35,7 @@
 	    methods: {
 		    handleSelect(key, keyPath) {
                 this.$emit("getIndex",key)
-		    },
-            getInput(e){
-                this.$emit("getInput",e)
-
-            }
+		    }
         }
 
 	}
@@ -65,11 +58,6 @@
     }
     .header-title{
         font-size: 2em;
-        font-family: "Century Gothic";
-    }
-    #input-container{
-        margin-top:20px;
-        width: 300px;
         font-family: "Century Gothic";
     }
 

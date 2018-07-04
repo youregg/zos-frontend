@@ -1,9 +1,9 @@
 <template>
     <div class = "home-container">
         <router-view/>
-        <Header @getIndex="showIndex" @getInput="showInput"></Header>
+        <Header @getIndex="showIndex"></Header>
         <div class="content-container">
-            <MainCatalog :is="currentComponent" v-bind:input="inputString"></MainCatalog>
+            <MainCatalog :is="currentComponent" v-bind:response="responseString"></MainCatalog>
         </div>
     </div>
 </template>
@@ -23,7 +23,7 @@
 				index:0,
                 arr:['MainCatalog','UserCatalog','Alias','Search','Chart'],
                 currentTab:"MainCatalog",
-                inputString:""
+                responseString:""
 
 			}
 		},
@@ -40,9 +40,6 @@
                 this.index = data
                 this.currentTab = this.arr[data]
             },
-            showInput:function(data){
-				this.inputString = data
-            }
         },
         computed:{
 			currentComponent(){
