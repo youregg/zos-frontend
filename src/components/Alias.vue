@@ -31,103 +31,30 @@
 <script>
 	export default{
 		name:"Alias",
-        data(){
-            return{
-                tableData9:[],
-            }
-        },
-        methods:{
-			indexMethod(index) {
-				return index +1;
-            },
-
-            initAlias(){
-	            let _this = this
-	            /*_this.$http({
-		            url:'http://127.0.0.1:3000/getAlias',
-		            method:'get'
-	            }).then(function (res) {
-		            let jobId = res.data.jobid
-		            let jobName = res.data.jobname
-		            _this.$http({
-			            url:'http://127.0.0.1:3000/getJobById/'+jobName+"/"+jobId,
-			            method:'get'
-		            }).then(function(res){
-			            _this.initChart(res.data)
-		            })
-	            }).catch(function(error){
-		            console.log(error)
-	            })*/
-
-	            _this.$http({
-		            url:'http://127.0.0.1:3000/getJobById/LSTALIAS/JOB02946',
-		            method:'get'
-	            }).then(function (res) {
-		            _this.initChart(res.data)
-	            }).catch(function(error){
-		            console.log(error)
-	            })
-            },
-
-            checkTemp(temp){
-            	if(temp.Aname!=""&&temp.Urelease!=""&&temp.Acreation!=""&&temp.AliasAssoType!=""&&temp.AliasAssoName!="")
-            		return true
-                else
-                	return false
-            },
-
-            clearTemp(temp){
-            	temp.Aname=""
-                temp.Urelease=""
-                temp.Acreation=""
-                temp.AliasAssoType=""
-                temp.AliasAssoName=""
-            },
-
-            initChart(data){
-            	let _this = this
-	            let lines = data.split("\n")
-                for(let i = 0; i<lines.length;i++){
-	                let temp = {
-		                "Aname":"",
-		                "Urelease":"",
-		                "Acreation":"",
-		                "AliasAssoType":"",
-		                "AliasAssoName":""
-	                }
-
-	                if(lines[i].indexOf("0ALIAS")!= -1){
-		                temp.Aname = lines[i].slice(17,lines[i].length)
-                        temp.Urelease = lines[i+2].slice(31,32)
-                        temp.Acreation = lines[i+2].match(/CREATION--------(\S*)/)[1]
-                        temp.AliasAssoType = lines[i+4].match(/(\S*)--/)[1]
-                        temp.AliasAssoName = lines[i+4].match(/--(\S*)/)[1]
-	                }
-	                if(_this.checkTemp(temp)){
-                        _this.tableData9.push(temp)
-                        console.log(temp)
-                    }
-
-                }
-
-
-            }
-        },
-
-        mounted(){
-        	this.initAlias()
-        }
-    }
+    methods:{
+      indexMethod(index) {
+        return index +1;
+      }
+    },
+		data(){
+			return{
+        tableData9:[]
+			}
+		}
+	}
 
 </script>
 
 <style scoped>
   .container{
-      display: flex;
-      flex-direction: column;
-      font-size: 13px;
-      margin-top: 120px;
-      align-items: center;
-      justify-content: center;
+    flex-direction: row;
+    font-size: 13px;
+    width: 80%;
+    height: auto;
+    margin-top: 50px;
+    left: 10%;
+    display: flex;
+    position: relative;
+    margin-bottom: 50px;
   }
 </style>

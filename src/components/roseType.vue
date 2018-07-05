@@ -3,26 +3,26 @@
 </template>
 
 <script>
-
+  import chartMessage from '../store';
   export default {
-        name: "roseType",
+    components:{
+      chartMessage
+    },
+    mounted: function () {
+      this.chartData.rows =  chartMessage.state.chart;
+      //console.log(this.chartData.rows)
+      console.log(this.chartData.rows )
+    },
+      name: "roseType",
       data () {
         this.chartSettings = {
           dimension: 'type',
-          metrics: '数量'
+          metrics: 'num'
         }
         return {
           chartData: {
-            columns: ['type', '数量'],
-            rows: [
-              { 'type': 'ALIAS', '数量': 118 },
-              { 'type': 'PAGESPACE', '数量': 7 },
-              { 'type': 'CLUSTER', '数量': 39 },
-              { 'type': 'DATA', '数量': 46 },
-              { 'type': 'INDEX', '数量': 19 },
-              { 'type': 'NONVSAM', '数量': 622 },
-              { 'type': 'USERCATALOG', '数量': 14 }
-            ]
+            columns: ['type', 'num'],
+            rows: []
           }
         }
       }
