@@ -11,7 +11,7 @@
                         <el-table id="table7" :data="tableData8" border stripe style="width: 100%">
                             <el-table-column align="center"  width="80" type="index" :index="indexMethod"></el-table-column>
                             <el-table-column align="center"  prop="Uname" label="USERCATALOG Name" width="250"></el-table-column>
-                            <el-table-column align="center"  label="HOSTORY">
+                            <el-table-column align="center"  label="HISTORY">
                                 <el-table-column align="center"  prop="Urelease" label="RELEASE" width="98"></el-table-column>
                             </el-table-column>
                             <el-table-column align="center"  label="VOLUMES">
