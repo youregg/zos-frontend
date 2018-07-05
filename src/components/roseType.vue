@@ -10,8 +10,6 @@
     },
     mounted: function () {
       this.chartData.rows =  chartMessage.state.chart;
-      //console.log(this.chartData.rows)
-      console.log(this.chartData.rows )
     },
       name: "roseType",
       data () {

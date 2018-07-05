@@ -105,7 +105,6 @@
 					}
 					if(_this.checkTemp(temp)){
 						_this.tableData9.push(temp)
-						console.log(temp)
 					}
 
 				}

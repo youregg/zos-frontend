@@ -57,7 +57,6 @@
               method: 'get'
             }).then(function (res) {
               _this.data = res.data
-              console.log(res.data)
               var MasterArray = new Array();
               MasterArray = res.data.split("\n");
               var clusterCount = 0;
