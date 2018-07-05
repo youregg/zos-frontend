@@ -29,9 +29,12 @@
 </template>
 
 <script>
+  import userMessage from '../store'
 	export default{
 		name:"UserCatalog",
-
+    components:{
+      userMessage
+    },
         methods:{
           indexMethod(index) {
             return index +1;
@@ -42,28 +45,11 @@
             	url:'http://127.0.0.1:3000/getJobById/LSTUSER/JOB04611',
 	            method:'get'
             }).then(function(res){
+
 	            _this.initUserChart(res.data)
             }).catch(function(error){
 			    console.log(error)
 		    })
-
-            /*_this.$http({
-              url:'http://127.0.0.1:3000/getUserCatalog',
-              method:'get'
-            }).then(function (res) {
-              let jobId = res.data.jobid
-              let jobName = res.data.jobname
-
-              console.log(jobId)
-              _this.$http({
-                  url:'http://127.0.0.1:3000/getJobById/'+jobName+"/"+jobId,
-                  method:'get'
-              }).then(function(res){
-                _this.initUserChart(res.data)
-              })
-            }).catch(function(error){
-              console.log(error)
-            })*/
           },
 
           checkTemp(temp){
@@ -84,6 +70,12 @@
           initUserChart(data){
             let _this = this
             let lines = data.split("\n")
+            let v1Count=0;
+            let v2Count=0;
+            let v3Count=0;
+            let v4Count=0;
+            let volserName = new Array
+            let volserNum = new Array
             for(let i = 0; i<lines.length;i++){
               let temp = {
                 "Uname":"",
@@ -92,13 +84,34 @@
                 "Udev":"",
                 "Udvolflag":"",
               }
-
               if(lines[i].indexOf("0USERCATALOG")!= -1){
                 temp.Uname = lines[i].split(" ")[2]
                 temp.Urelease = lines[i+2].slice(31,32)
                 var e = lines[i+4].toString()
                 var volums = e.replace(/^\s+|\s+$/g,"").split("     ")
                 temp.Uvolser = volums[0].substring(volums[0].lastIndexOf('-')+1,volums[0].length)
+                let vol = volums[0].substring(volums[0].lastIndexOf('-')+1,volums[0].length).toString()
+                console.log(vol)
+                if(vol==="BYSA01"){
+                  v1Count++;
+                  volserName[0]="BYSA01"
+                  volserNum[0]=v1Count
+                }
+                if(vol==="BYCT01"){
+                  v2Count++;
+                  volserName[1]="BYCT01"
+                  volserNum[1]=v2Count
+                }
+                if(vol==="BIPL01"){
+                  v3Count++;
+                  volserName[2]="BIPL01"
+                  volserNum[2]=v3Count
+                }
+                if(vol==="BYPM02"){
+                  v4Count++;
+                  volserName[3]="BYPM02"
+                  volserNum[3]=v4Count
+                }
                 temp.Udev = volums[1].substring(volums[1].lastIndexOf('-')+1,volums[0].length)
                 temp.Udvolflag = volums[2].substring(volums[2].lastIndexOf('-')+1,volums[0].length)
                 //console.log(volums)
@@ -108,6 +121,17 @@
                 //console.log(temp)
               }
             }
+            for (let i=0;i<volserNum.length;i++){
+              let temp1={
+                "type":'',
+                "num":''
+              }
+              temp1.type=volserName[i]
+              temp1.num=volserNum[i]
+              _this.userChart.push(temp1)
+            }
+            console.log(_this.userChart)
+            userMessage.commit('user_message',{userChart:_this.userChart,num:1});
           }
         },
     mounted(){
@@ -115,7 +139,8 @@
     },
 		data(){
 			return{
-				tableData8:[]
+				tableData8:[],
+        userChart:[]
 			}
 		}
 	}
