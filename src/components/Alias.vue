@@ -11,7 +11,7 @@
             <el-table id="table9" :data="tableData9" border stripe style="width: 100%">
               <el-table-column align="center"  width="80" type="index" :index="indexMethod"></el-table-column>
               <el-table-column align="center"  prop="Aname" label="AliasName" width="150"></el-table-column>
-              <el-table-column align="center"  label="HOSTORY">
+              <el-table-column align="center"  label="HISTORY">
                 <el-table-column align="center"  prop="Urelease" label="RELEASE" width="98"></el-table-column>
                 <el-table-column align="center" prop="Acreation" label="CREATION" width="163"></el-table-column>
               </el-table-column>

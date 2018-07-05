@@ -71,7 +71,6 @@
               for(let i=0;i<MasterArray.length;i++){
                 var arr = new Array()
                 arr=MasterArray[i].toString().substring(1).replace(/^\s+|\s+$/g,"").split(" ")
-                //console.log(arr)
                 if(arr.length === 3){
                   var temp ={
                     "Mname":'',
@@ -129,20 +128,17 @@
               }
 
               for (let j=0;j<ChartType.length;j++){
-                //console.log(ChartType[j])
                 if(ChartNum[j] !==0){
                   var temp2={
                     "type":'',
                     "num":''
                   }
-                  //console.log(ChartType[j].get(0))
                   temp2.type=ChartType[j]
                   temp2.num=ChartNum[j]
                   _this.mainChart.push(temp2)
                 }
               }
               chartMessage.commit('chart_message',{chart:_this.mainChart,num:1});
-              //console.log(_this.mainChart)
             }).catch(function(error){
               console.log(error)
             })
@@ -168,15 +164,6 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-    }
-
-    .cycleChart{
-        display: flex;
-        width: 90%;
-        flex-direction: column;
-        font-size: 13px;
-        align-items: center;
-        margin-top:50px;
     }
 
     .table{
