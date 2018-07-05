@@ -43,21 +43,6 @@
 
 			initAlias(){
 				let _this = this
-        /*_this.$http({
-         url:'http://127.0.0.1:3000/getAlias',
-         method:'get'
-         }).then(function (res) {
-         let jobId = res.data.jobid
-         let jobName = res.data.jobname
-         _this.$http({
-         url:'http://127.0.0.1:3000/getJobById/'+jobName+"/"+jobId,
-         method:'get'
-         }).then(function(res){
-         _this.initChart(res.data)
-         })
-         }).catch(function(error){
-         console.log(error)
-         })*/
 
 				_this.$http({
 					url:'http://127.0.0.1:3000/getJobById/LSTALIAS/JOB02946',
