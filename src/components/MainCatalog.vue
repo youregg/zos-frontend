@@ -59,18 +59,10 @@
               _this.data = res.data
               var MasterArray = new Array();
               MasterArray = res.data.split("\n");
-              var clusterCount = 0;
-              var aliasCount = 0;
-              var pageCount = 0;
-              var indexCount = 0;
-              var nonCount = 0;
-              var userCount = 0;
-              var dataCount = 0;
-              let ChartType = new Array();
-              let ChartNum = new Array();
               for(let i=0;i<MasterArray.length;i++){
                 var arr = new Array()
                 arr=MasterArray[i].toString().substring(1).replace(/^\s+|\s+$/g,"").split(" ")
+                //console.log(arr)
                 if(arr.length === 3){
                   var temp ={
                     "Mname":'',
@@ -78,67 +70,22 @@
                   }
                   temp.Mname = arr[2];
                   temp.Mtype = arr[0];
-
                   _this.tableData1.push(temp)
-                  var v = new RegExp(arr[0].toString());
-                  if(v.test("CLUSTER")){
-                    let e="CLUSTER"
-                    clusterCount++;
-                    ChartType[0]=e;
-                    ChartNum[0]=clusterCount
-                  }
-                  if(v.test("PAGESPACE")){
-                    let e="PAGESPACE"
-                    pageCount++;
-                    ChartType[1]=e;
-                    ChartNum[1]=pageCount
-                  }
-                  if(v.test("ALIAS")){
-                    let e="ALIAS"
-                    aliasCount++;
-                    ChartType[2]=e;
-                    ChartNum[2]=aliasCount
-                  }
-                  if(v.test("INDEX")){
-                    let e ="INDEX"
-                    indexCount++;
-                    ChartType[3]=e;
-                    ChartNum[3]=indexCount
-                  }
-                  if(v.test("NONVSAM")){
-                    let e ="NONVSAM"
-                    nonCount++;
-                    ChartType[4]=e;
-                    ChartNum[4]=nonCount
-                  }
-                  if(v.test("USERCATALOG")){
-                    let e ="USERCATALOG"
-                    userCount++;
-                    ChartType[5]={e,userCount};
-                    ChartType[5]=e;
-                    ChartNum[5]=userCount
-                  }
-                  if(v.test("DATA")){
-                    let e ="DATA"
-                    dataCount++;
-                    ChartType[6]=e;
-                    ChartNum[6]=dataCount
-                  }
                 }
-              }
-
-              for (let j=0;j<ChartType.length;j++){
-                if(ChartNum[j] !==0){
-                  var temp2={
-                    "type":'',
-                    "num":''
+                if(arr.length === 2){
+                  if(arr[0].toString()!== "LISTCAT" && arr[0].toString()!== "TOTAL" ){
+                    var temp1={
+                      "type":'',
+                      "num":''
+                    }
+                    temp1.type=arr[0]
+                    temp1.num = arr[1].substring(arr[1].lastIndexOf('-')+1,arr[1].length)
+                    _this.mainChart.push(temp1)
                   }
-                  temp2.type=ChartType[j]
-                  temp2.num=ChartNum[j]
-                  _this.mainChart.push(temp2)
                 }
               }
               chartMessage.commit('chart_message',{chart:_this.mainChart,num:1});
+
             }).catch(function(error){
               console.log(error)
             })
@@ -164,6 +111,15 @@
         align-items: center;
         justify-content: center;
         width: 100%;
+    }
+
+    .cycleChart{
+        display: flex;
+        width: 90%;
+        flex-direction: column;
+        font-size: 13px;
+        align-items: center;
+        margin-top:50px;
     }
 
     .table{
