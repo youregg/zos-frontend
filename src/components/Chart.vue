@@ -9,12 +9,11 @@
   import roseType from '../components/roseType'
 	export default{
 		name:"Chart",
-    components:{
-      roseType
-    },
+        components:{
+			roseType
+        },
 		data(){
 			return{
-
 			}
 		}
 	}
@@ -33,6 +32,5 @@
       position:center;
       margin-bottom: 50px;
     }
-
 
 </style>
