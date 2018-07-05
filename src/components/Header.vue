@@ -3,9 +3,6 @@
         <div class="header-title">
             zOS frontend
         </div>
-        <div class="input-container">
-            <el-input v-model="input" placeholder="Please enter catalog" prefix-icon="el-icon-search" clearable @change="showTable"></el-input>
-        </div>
         <div class="nav-container">
             <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect" background-color="#D2E0E9">
                 <el-menu-item index="0">Main catalog</el-menu-item>
@@ -15,7 +12,6 @@
                 <el-menu-item index="4">Chart</el-menu-item>
             </el-menu>
         </div>
-      <Search :msg1="HaliasVisible"></Search>
     </div>
 </template>
 
@@ -25,9 +21,9 @@
   import Search from '../components/Search'
     export default {
         name: 'Header',
-      components:{
-        Search
-      },
+        components:{
+            Search
+        },
         data () {
             return {
                 msg: 'Welcome to Your Vue.js App',
@@ -39,16 +35,9 @@
 	    methods: {
 		    handleSelect(key, keyPath) {
                 this.$emit("getIndex",key)
+		    }
+        }
 
-		    },
-        showTable(e){
-		      console.log(e)
-          if(e == "ALIAS"){
-		        this.HaliasVisible = !this.HaliasVisible;
-		        Search.aliasVisible = this.HaliasVisible;
-          }
-	    }
-    }
 	}
 </script>
 
@@ -58,20 +47,17 @@
         height: 13rem;
         left: 0;
         top:0;
+        position: fixed;
         background-color: rgb(210,224,233);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         font-family: "Century Gothic";
+        z-index: 100;
     }
     .header-title{
         font-size: 2em;
-        font-family: "Century Gothic";
-    }
-    .input-container{
-        margin-top:20px;
-        width: 300px;
         font-family: "Century Gothic";
     }
 

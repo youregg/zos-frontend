@@ -3,8 +3,7 @@
         <router-view/>
         <Header @getIndex="showIndex"></Header>
         <div class="content-container">
-            <MainCatalog :is="currentComponent"></MainCatalog>
-
+            <MainCatalog :is="currentComponent" v-bind:response="responseString"></MainCatalog>
         </div>
     </div>
 </template>
@@ -23,7 +22,8 @@
 			return {
 				index:0,
                 arr:['MainCatalog','UserCatalog','Alias','Search','Chart'],
-                currentTab:"MainCatalog"
+                currentTab:"MainCatalog",
+                responseString:""
 
 			}
 		},
@@ -39,8 +39,7 @@
 			showIndex:function(data){
                 this.index = data
                 this.currentTab = this.arr[data]
-                //console.log(this.currentTab)
-            }
+            },
         },
         computed:{
 			currentComponent(){
@@ -55,10 +54,17 @@
     .home-container{
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
+
     .content-container{
         display: flex;
         flex-direction: column;
+        margin-top: 120px;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
     }
 
 
