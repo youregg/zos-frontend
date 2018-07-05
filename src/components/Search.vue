@@ -71,7 +71,7 @@
                             <el-col :span="22" style="width: 100%" >
                                 <div class="grid-content bg-white" >
                                     <el-card class="box-card" style="width: 100%">
-                                        <el-table id="table11" :data="tableData12" border stripe style="width: 100%">
+                                        <el-table id="table12" :data="tableData12" border stripe style="width: 100%">
                                             <el-table-column align="center"  width="80" type="index" :index="indexMethod"></el-table-column>
                                             <el-table-column align="center" prop="AssociationType" label="TYPE"  width="180"></el-table-column>
                                             <el-table-column align="center"  prop="AssociationName" label="NAME"></el-table-column>

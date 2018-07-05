@@ -42,7 +42,8 @@
     			cChart:'1',
                 MasterMenu:'1',
                 tableData1: [],
-                mainChart:[]
+                mainChart:[],
+                tableData2:[]
             }
         },
         methods:{

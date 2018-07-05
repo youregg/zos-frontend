@@ -11,7 +11,8 @@ export default new Vuex.Store({
   * */
   state: {
     chart:[],
-    num:''
+    num:'',
+    treeChart:[]
   },
   /*
     * mutations里面规定的就是想要改变state(数据)的动作函数，
@@ -21,6 +22,10 @@ export default new Vuex.Store({
   mutations: {
     chart_message (state, message) {
       state.chart = message.chart;
+      state.num = message.num;
+    },
+    tree_message(state,message){
+      state.treeChart = message.treeChart;
       state.num = message.num;
     }
   }
