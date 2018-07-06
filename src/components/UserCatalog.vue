@@ -42,10 +42,9 @@
 			init(){
 				let _this = this
 				_this.$http({
-					url:'http://127.0.0.1:3000/getJobById/LSTUSER/JOB04611',
+					url:'http://127.0.0.1:3000/getJobById/LSTUSER/JOB05813',
 					method:'get'
 				}).then(function(res){
-
 					_this.initUserChart(res.data)
 				}).catch(function(error){
 					console.log(error)

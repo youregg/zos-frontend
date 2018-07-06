@@ -146,7 +146,7 @@
 				initTree(){
 					let _this = this
 					_this.$http({
-						url: 'http://127.0.0.1:3000/getJobById/LSTMASTR/JOB04896',
+						url: 'http://127.0.0.1:3000/getJobById/LSTMASTR/JOB05823',
 						method: 'get'
 					}).then(function (res) {
 						_this.dealTreeData(res.data)
@@ -208,7 +208,7 @@
                 initUserChart(){
 	                let _this = this
 	                _this.$http({
-		                url:'http://127.0.0.1:3000/getJobById/LSTUSER/JOB04611',
+		                url:'http://127.0.0.1:3000/getJobById/LSTUSER/JOB05813',
 		                method:'get'
 	                }).then(function(res){
 		                _this.dealUserChart(res.data)

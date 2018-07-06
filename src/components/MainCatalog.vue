@@ -54,7 +54,7 @@
           initMainCatalog(){
             let _this = this
             _this.$http({
-              url: 'http://127.0.0.1:3000/getJobById/LSTMASTR/JOB04558',
+              url: 'http://127.0.0.1:3000/getJobById/LSTMASTR/JOB05807',
               method: 'get'
             }).then(function (res) {
               _this.data = res.data
@@ -64,14 +64,22 @@
               for(let i=0;i<MasterArray.length;i++){
                 var arr = new Array()
                 arr=MasterArray[i].toString().substring(1).replace(/^\s+|\s+$/g,"").split(" ")
-                //console.log(arr)
+
                 if(arr.length === 3){
+	                console.log(arr)
                   var temp ={
                     "Mname":'',
                     "Mtype":''
                   }
-                  temp.Mname = arr[2];
-                  temp.Mtype = arr[0];
+                  let regp=/^[A-Z]+$/;
+                  if(!regp.test(arr[0])){
+                      temp.Mname = '';
+	                  temp.Mtype = arr[0];
+                  }
+                  else{
+                      temp.Mname = arr[2];
+                      temp.Mtype = arr[0];
+                  }
                   _this.tableData1.push(temp)
                 }
                 if(arr.length === 2){

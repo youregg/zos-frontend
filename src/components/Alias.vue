@@ -45,7 +45,7 @@
 				let _this = this
 
 				_this.$http({
-					url:'http://127.0.0.1:3000/getJobById/LSTALIAS/JOB02946',
+					url:'http://127.0.0.1:3000/getJobById/LSTALIAS/JOB05835',
 					method:'get'
 				}).then(function (res) {
 					_this.initChart(res.data)
