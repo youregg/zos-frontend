@@ -58,6 +58,7 @@
               method: 'get'
             }).then(function (res) {
               _this.data = res.data
+              console.log(res.data)
               var MasterArray = new Array();
               MasterArray = res.data.split("\n");
               for(let i=0;i<MasterArray.length;i++){
