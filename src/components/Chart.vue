@@ -170,29 +170,29 @@
                             let volums = e.replace(/^\s+|\s+$/g,"").split("     ")
                             let vol = volums[0].substring(volums[0].lastIndexOf('-')+1,volums[0].length).toString()
                             if(vol=="BYSA01"){
-                                v1Count++;
+                                v1Count++
                                 volserName[0]="BYSA01"
                                 volserNum[0]=v1Count
                             }
                             if(vol=="BYCT01"){
-                                v2Count++;
+                                v2Count++
                                 volserName[1]="BYCT01"
                                 volserNum[1]=v2Count
                             }
                             if(vol=="BIPL01"){
-                                v3Count++;
+                                v3Count++
                                 volserName[2]="BIPL01"
                                 volserNum[2]=v3Count
                             }
                             if(vol=="BYPM02"){
-                                v4Count++;
+                                v4Count++
                                 volserName[3]="BYPM02"
                                 volserNum[3]=v4Count
                             }
                         }
                     }
 
-                    for (let i=0;i < volserNum.length;i++){
+                    for (let i = 0;i < volserNum.length;i++){
                         let temp1={
                         	"type":'',
                             "num":''
@@ -241,10 +241,6 @@
                 this.userData.rows =  this.userChart
 			}
 		}
-
-
-
-
 </script>
 
 <style scoped>
@@ -276,6 +272,7 @@
     align-items: center;
     margin-top:50px;
   }
+
   .treeChart{
       display: flex;
       width: 90%;

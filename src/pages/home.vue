@@ -24,7 +24,6 @@
                 arr:['MainCatalog','UserCatalog','Alias','Search','Chart'],
                 currentTab:"MainCatalog",
                 responseString:""
-
 			}
 		},
 		components:{
@@ -49,7 +48,6 @@
 	}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     .home-container{
         display: flex;
@@ -66,6 +64,4 @@
         justify-content: center;
         width: 90%;
     }
-
-
 </style>

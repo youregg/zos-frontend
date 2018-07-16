@@ -51,6 +51,32 @@
           indexMethod(index) {
             return index +1;
           },
+
+
+          dealMainData(data){
+          	let lines = data.split("\n")
+            let temp = {
+	            "Mname":'',
+	            "Mtype":''
+            }
+            for(let i = 0; i < lines.length; i++){
+          		if(lines[i].indexOf("0USERCATALOG")!=-1){
+          			temp.Mname = lines[i].match(/0USERCATALOG --- (\S*)/)[1]
+                    temp.Mtype = "USERCATALOG"
+                    _this.mainChart.push(temp)
+                }else if(lines[i].indexOf("0ALIAS")!=-1){
+                    temp.Mname = lines[i].match(/0ALIAS --------- (\S*)/)[1]
+                    temp.Mtype = "ALIAS"
+                    _this.mainChart.push(temp)
+                }else if(lines[i].indexOf("0NONVSAM")!=-1){
+                    temp.Mname = lines[i].match(/0NONVSAM ------- (\S*)/)[1]
+                    temp.Mtype = "NONVASM"
+                    _this.mainChart.push(temp)
+                }
+            }
+
+          },
+
           initMainCatalog(){
             let _this = this
             _this.$http({
@@ -58,7 +84,7 @@
               method: 'get'
             }).then(function (res) {
               _this.data = res.data
-              console.log(res.data)
+
               var MasterArray = new Array();
               MasterArray = res.data.split("\n");
               for(let i=0;i<MasterArray.length;i++){
@@ -71,8 +97,8 @@
                     "Mname":'',
                     "Mtype":''
                   }
-                  let regp=/^[A-Z]+$/;
-                  if(!regp.test(arr[0])){
+                  let regp=/^[0-9]*$/;
+                  if(regp.test(arr[2])){
                       temp.Mname = '';
 	                  temp.Mtype = arr[0];
                   }

@@ -37,8 +37,9 @@
 		},
 		methods:{
 			indexMethod(index) {
-				return index +1;
+				return index +1
 			},
+
 			init(){
 				let _this = this
 				_this.$http({
@@ -80,8 +81,8 @@
 					if(lines[i].indexOf("0USERCATALOG")!= -1){
 						temp.Uname = lines[i].split(" ")[2]
 						temp.Urelease = lines[i+2].slice(31,32)
-						var e = lines[i+4].toString()
-						var volums = e.replace(/^\s+|\s+$/g,"").split("     ")
+						let e = lines[i+4].toString()
+						let volums = e.replace(/^\s+|\s+$/g,"").split("     ")
 						temp.Uvolser = volums[0].substring(volums[0].lastIndexOf('-')+1,volums[0].length)
 						temp.Udev = volums[1].substring(volums[1].lastIndexOf('-')+1,volums[0].length)
 						temp.Udvolflag = volums[2].substring(volums[2].lastIndexOf('-')+1,volums[0].length)
@@ -93,9 +94,11 @@
 
 			}
 		},
+
 		mounted(){
 			this.init()
 		},
+
 		data(){
 			return{
 				tableData8:[],
@@ -103,7 +106,6 @@
 			}
 		}
 	}
-
 </script>
 
 <style scoped>
