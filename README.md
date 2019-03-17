@@ -1,8 +1,9 @@
 # zos-frontend
 > A Vue.js project
 
-##项目描述
-```该系统基于主机上收取的目录等数据，分析并记录目录及别名信息，并在WEB界面中做相应展示，具体功能描述如下：
+## 项目描述
+```
+该系统基于主机上收取的目录等数据，分析并记录目录及别名信息，并在WEB界面中做相应展示，具体功能描述如下：
 1. 展示主目录
 2. 展示用户目录
 3. 展示别名
@@ -11,9 +12,8 @@
 ```
 
 ## 环境搭建
-
 ``` 
-###在第一个terminal中输入以下指令：
+### 在第一个terminal中输入以下指令：
 
     # install dependencies
     npm install
@@ -21,7 +21,7 @@
     # serve with hot reload at localhost:8080
     npm run dev
 
-###打开另一个terminal输入：
+### 打开另一个terminal输入：
 
     node server.js
 
@@ -30,9 +30,9 @@
 项目设置运行后自动打开默认浏览器
 ```
 
-##技术实现
-
-```###实现http请求，跨域处理
+## 技术实现
+```
+### 实现http请求，跨域处理
 
 vue.jx+node server.js+axios
 
@@ -40,7 +40,7 @@ vue.jx+node server.js+axios
 
 处理跨域问题我们同时还用到了node.js，采用了中间层转发的方式，获取返回的作业内容。
 
-###实现数据存储
+### 实现数据存储
 
 vuex+store.js
 
