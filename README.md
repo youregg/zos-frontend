@@ -34,7 +34,7 @@
 
 ### 实现http请求，跨域处理
 
-    `vue.jx+node server.js+axios`
+    vue.jx+node server.js+axios
 
 前端整体框架使用了vue.js,不同的展示内容放在不同的组件中。在axios中设置了代理跨域信息，包括目标服务器以及是否可以进行跨域。
 
@@ -42,7 +42,7 @@
 
 ### 实现数据存储
 
-    `vuex+store.js`
+    vuex+store.js
 
 在项目中报表功能中用到了其他组件获取的数据，因此我们使用了vuex存放某个组件中获得的数据信息，在其他组件中可以直接调用。
 
